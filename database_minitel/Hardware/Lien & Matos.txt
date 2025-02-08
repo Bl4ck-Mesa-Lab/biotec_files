@@ -1,0 +1,14 @@
+https://arduiblog.com/2019/04/29/ressuscitez-le-minitel/
+
+https://sta6502.blogspot.com/2016/02/utiliser-un-minitel-comme-terminal-sur.html
+
+- Raspberry Pi 3
+- Carte Micro SD
+- BreadBoard
+- Resistances 220 K.Ohm
+- Resistance 10 K.Ohm
+- REsistance 22 K.Ohm
+- Transistor 2N2222A
+- PCB Board
+- Convertisseur USB --> TTL
+

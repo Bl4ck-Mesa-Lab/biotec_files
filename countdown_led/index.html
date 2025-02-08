@@ -1,0 +1,112 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        html {
+            font-family: Arial;
+            display: inline-block;
+            margin: 0px auto;
+            text-align: center;
+        }
+
+            .button {
+            background-color: #1FA5F1;
+            border: none;
+            color: white;
+            padding: 16px 60px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .button_start {
+            background-color: #1FA5F1;
+            padding: 16px 50px;
+            border-radius: 50px;
+        }
+
+        .button_stop {
+            background-color: #44484A;
+            padding: 16px 50px;
+            border-radius: 50px;
+        }
+
+        .button_success {
+            background-color: #53be5f;
+            padding: 16px 40px;
+            border-radius: 50px;
+        }
+
+
+        .button_failed {
+            background-color: #F34D22;
+            padding: 16px 45px;
+            border-radius: 50px;
+        }
+
+        .button_reset {
+            background-color: #afaca5; color: black; /* Gray */
+            padding: 16px 50px;
+            border-radius: 50px;
+        }
+
+        .button_pause {
+            background-color: #efc52d; color: black; /* Gray */
+            padding: 16px 50px;
+            border-radius: 50px;
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+    <h1> BIOTEC LED PROGRAM </h1>
+    <h2>Status Neopixel Operations</h2>
+    <p>Current LEDs state: <strong>""" + led_state + """</strong></p>
+
+    <br>
+    <br>
+
+    <div class="start_and_stop">
+
+  <a href=\"led_on\"><button class="button button_start" style="font-weight:bold;"> START </button></a>
+  <a href=\"led_off\"><button class="button button_stop" style="font-weight:bold;">STOP</button></a>
+
+    </div>
+
+
+    <br>
+    <hr />
+    <br>
+
+    <div class="success_and_failed">
+
+  <a href=\"led_success\"><button class="button button_success" style="font-weight:bold;">SUCCESS</button></a>
+  <a href=\"led_failed\"><button class="button button_failed" style="font-weight:bold;">FAILED</button></a>
+
+    </div>
+
+    <br>
+    <hr />
+    <br>
+
+<div class="success_and_failed">
+  <a href=\"led_reset\"><button class="button button_pause">PAUSE</button></a>
+  <a href=\"led_reset\"><button class="button button_reset">RESET</button></a>
+</div>
+
+
+
+
+
+
+</body>
+
+</html>
