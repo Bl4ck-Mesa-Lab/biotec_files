@@ -1,4 +1,4 @@
-<img src="https://github.com/coded-with-claws/iot_lab/blob/main/Pictures/IoT_Lab_banner.png" />
+<img src="https://github.com/Bl4ck-Mesa-Lab/biotec_files/blob/main/Pictures/BIOTEC_FILES_BANNER.png" />
 
 # BIOTEC Files for ESCAPE-GAME
 
