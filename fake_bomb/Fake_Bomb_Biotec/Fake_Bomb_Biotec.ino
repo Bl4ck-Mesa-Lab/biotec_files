@@ -1,8 +1,10 @@
+// Viral Science www.viralsciencecreativity.com www.youtube.com/c/viralscience
 // Arduino Airsoft Time Bomb
 
 #include <Keypad.h>
 #include <Wire.h> 
 #include <LiquidCrystal_I2C.h>
+
 LiquidCrystal_I2C lcd(0x27,16,2);  //Change the HEX address
 
 int Hours = 00;
@@ -12,9 +14,9 @@ int trycount = 0;
 int keycount = 0;
 int i = 0;
 
-int redled = A2;
+int redled = A0;
 int yellowled = A1;
-int greenled = A3;
+int greenled = A2;
 
 int hourstenscode;
 int hoursonescode;
@@ -30,15 +32,15 @@ char password[4];
 char entered[4];
 
 const byte ROWS = 4;
-const byte COLS = 3;
+const byte COLS = 4;
 char keys[ROWS][COLS] = {
-  {'1', '2', '3'},
-  {'4', '5', '6'},
-  {'7', '8', '9'},
-  {'*', '0', '#'}
+  {'1', '2', '3', 'A'},
+  {'4', '5', '6', 'B'},
+  {'7', '8', '9', 'C'},
+  {'*', '0', '#', 'D'}
 };
-byte rowPins[ROWS] = {8, 7, 6, 5};  //7,2,3,5 for Black 4x3 keypad
-byte colPins[COLS] = {4, 3, 2};     //6,8,4 for Black 4x3 Keypad
+byte rowPins[ROWS] = {9, 8, 7, 6};  //7,2,3,5 for Black 4x3 keypad
+byte colPins[COLS] = {5, 4, 3, 2};     //6,8,4 for Black 4x3 Keypad
 
 Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
 
@@ -50,7 +52,7 @@ void setup() {
   digitalWrite(yellowled,HIGH);
   digitalWrite(greenled,HIGH);
 
-  //lcd.begin(16,2);
+  lcd.begin(16,2);
   lcd.init();
   lcd.backlight();
   Serial.begin(9600);
@@ -71,7 +73,7 @@ void setup() {
       if ((armcode != '*') && (armcode != '#'))
       {
         lcd.print(armcode);
-        tone(9, 5000, 100);
+        tone(10, 5000, 100);
         password[keycount] = armcode;
         keycount++;
       }
@@ -107,7 +109,7 @@ void setup() {
     if (hourstens >= '0' && hourstens <= '9')
     {
       hourstenscode = hourstens - '0';
-      tone(9, 5000, 100);
+      tone(10, 5000, 100);
       lcd.print(hourstens);
       keycount++;
     }
@@ -121,7 +123,7 @@ void setup() {
     if (hoursones >= '0' && hoursones <= '9')
     {
       hoursonescode = hoursones - '0';
-      tone(9, 5000, 100);
+      tone(10, 5000, 100);
       lcd.print(hoursones);
       keycount++;
     }
@@ -135,7 +137,7 @@ void setup() {
     if (mintens >= '0' && mintens <= '9')
     {
       mintenscode = mintens - '0';
-      tone(9, 5000, 100);
+      tone(10, 5000, 100);
       lcd.print(mintens);
       keycount++;
     }
@@ -149,7 +151,7 @@ void setup() {
     if (minones >= '0' && minones <= '9')
     {
       minonescode = minones - '0';
-      tone(9, 5000, 100);
+      tone(10, 5000, 100);
       lcd.print(minones);
       keycount++;
     }
@@ -163,7 +165,7 @@ void setup() {
     if (sectens >= '0' && sectens <= '9')
     {
       sectenscode = sectens - '0';
-      tone(9, 5000, 100);
+      tone(10, 5000, 100);
       lcd.print(sectens);
       keycount = 10;
     }
@@ -177,7 +179,7 @@ void setup() {
     if (secones >= '0' && secones <= '9')
     {
       seconescode = secones - '0';
-      tone(9, 5000, 100);
+      tone(10, 5000, 100);
       lcd.print(secones);
       keycount = 11;
     }
@@ -248,17 +250,17 @@ void setup() {
 
     if (armkey == '#')
     {
-      tone(9, 5000, 100);
+      tone(10, 5000, 100);
       delay(50);
-      tone(9, 0, 100);
+      tone(10, 0, 100);
       delay(50);
-      tone(9, 5000, 100);
+      tone(10, 5000, 100);
       delay(50);
-      tone(9, 0, 100);
+      tone(10, 0, 100);
       delay(50);
-      tone(9, 5000, 100);
+      tone(10, 5000, 100);
       delay(50);
-      tone(9, 0, 100);
+      tone(10, 0, 100);
       lcd.clear();
       lcd.print ("Bomb Armed!");
       lcd.setCursor(0, 1);
@@ -276,7 +278,7 @@ void loop()
 
   if (disarmcode == '*')
   {
-    tone(9, 5000, 100);
+    tone(10, 5000, 100);
     lcd.clear();
     lcd.setCursor(0, 0);
     lcd.print("Code: ");
@@ -288,7 +290,7 @@ void loop()
       char disarmcode = keypad.getKey();
       if (disarmcode == '#')
       {
-        tone(9, 5000, 100);
+        tone(10, 5000, 100);
         keycount = 0;
         lcd.clear();
         lcd.setCursor(0, 0);
@@ -301,7 +303,7 @@ void loop()
         lcd.print(disarmcode);
         entered[keycount] = disarmcode;
         keycount++;
-        tone(9, 5000, 100);
+        tone(10, 5000, 100);
         delay(100);
         lcd.noBlink();
         lcd.setCursor(keycount + 6, 0);
@@ -334,7 +336,7 @@ void loop()
         lcd.noBlink();
         lcd.clear();
         lcd.home();
-        lcd.print("Wrong Password!");
+        lcd.print("Wrong Code!");
         trycount++;
 
         if (Hours > 0)
@@ -386,22 +388,22 @@ void timer()
       while (Minutes < 0)
       {
         digitalWrite(redled, LOW);
-        tone(9, 7000, 100);
+        tone(10, 7000, 100);
         delay(100);
         digitalWrite(redled, HIGH);
-        tone(9, 7000, 100);
+        tone(10, 7000, 100);
         delay(100);
         digitalWrite(yellowled, LOW);
-        tone(9, 7000, 100);
+        tone(10, 7000, 100);
         delay(100);
         digitalWrite(yellowled, HIGH);
-        tone(9, 7000, 100);
+        tone(10, 7000, 100);
         delay(100);
         digitalWrite(greenled, LOW);
-        tone(9, 7000, 100);
+        tone(10, 7000, 100);
         delay(100);
         digitalWrite(greenled, HIGH);
-        tone(9, 7000, 100);
+        tone(10, 7000, 100);
         delay(100);
       }
     }
@@ -434,6 +436,8 @@ void timer()
     lcd.write ("0");
     lcd.setCursor (11, 1);
     lcd.print (Minutes);
+    
+
   }
   lcd.print (":");
 
@@ -474,7 +478,7 @@ void timer()
 
     if (currentMillis - secMillis > interval)
     {
-      tone(9, 7000, 50);
+      tone(10, 7000, 50);
       secMillis = currentMillis;
       Seconds --;
       digitalWrite(yellowled, LOW);
