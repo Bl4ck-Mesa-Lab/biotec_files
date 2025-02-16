@@ -203,7 +203,7 @@ void setup() {
     if (Hours < 10)
     {
       lcd.setCursor (7, 1);
-      lcd.write ("0");
+      lcd.print ("0");
       lcd.setCursor (8, 1);
       lcd.print (Hours);
     }
@@ -217,7 +217,7 @@ void setup() {
     if (Minutes < 10)
     {
       lcd.setCursor (10, 1);
-      lcd.write ("0");
+      lcd.print ("0");
       lcd.setCursor (11, 1);
       lcd.print (Minutes);
     }
@@ -232,7 +232,7 @@ void setup() {
     if (Seconds < 10)
     {
       lcd.setCursor (13, 1);
-      lcd.write ("0");
+      lcd.print ("0");
       lcd.setCursor (14, 1);
       lcd.print (Seconds);
     }
@@ -419,7 +419,7 @@ void timer()
   if (Hours < 10)
   {
     lcd.setCursor (7, 1);
-    lcd.write ("0");
+    lcd.print ("0");
     lcd.setCursor (8, 1);
     lcd.print (Hours);
   }
@@ -433,7 +433,7 @@ void timer()
   if (Minutes < 10)
   {
     lcd.setCursor (10, 1);
-    lcd.write ("0");
+    lcd.print ("0");
     lcd.setCursor (11, 1);
     lcd.print (Minutes);
     
@@ -450,7 +450,7 @@ void timer()
   if (Seconds < 10)
   {
     lcd.setCursor (13, 1);
-    lcd.write ("0");
+    lcd.print ("0");
     lcd.setCursor (14, 1);
     lcd.print (Seconds);
   }
